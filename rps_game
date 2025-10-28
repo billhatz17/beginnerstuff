@@ -16,7 +16,7 @@ while choice != "q":
             continue
         elif comp_play == "paper":
             print("the PC played " + comp_play)
-            print('YOUR LOSS')
+            print('your loss')
             compw += 1
             continue
         elif comp_play == "scissors":
@@ -28,7 +28,7 @@ while choice != "q":
     elif choice == "scissors":
         if comp_play == "rock":
             print("the PC played " + comp_play)
-            print("YOUR LOSS!")
+            print("your loss!")
             compw += 1
         elif comp_play == "paper":
             print("the PC played " + comp_play)
@@ -48,7 +48,7 @@ while choice != "q":
             print("tie")
         elif comp_play == "scissors":
             print("the PC played " + comp_play)
-            print("YOUR LOSS")
+            print("your loss")
             compw += 1
 
 
