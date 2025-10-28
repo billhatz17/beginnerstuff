@@ -1,0 +1,57 @@
+compw = 0
+userw = 0
+options = ["rock", "paper", "scissors"]
+choice = input("play? Or perhaps, quit? ").lower()
+
+while choice != "q":
+
+    choice = input("Rock, Paper, Scissors? Or perhaps, quit? ").lower()
+    import random
+    number = random.randrange(0, 3)
+    comp_play = options[number]
+    if choice == "rock":
+        if comp_play == "rock":
+            print("the PC played " + comp_play)
+            print("tie")
+            continue
+        elif comp_play == "paper":
+            print("the PC played " + comp_play)
+            print('YOUR LOSS')
+            compw += 1
+            continue
+        elif comp_play == "scissors":
+            print("the PC played " + comp_play)
+            print("your win")
+            userw += 1
+            continue
+
+    elif choice == "scissors":
+        if comp_play == "rock":
+            print("the PC played " + comp_play)
+            print("YOUR LOSS!")
+            compw += 1
+        elif comp_play == "paper":
+            print("the PC played " + comp_play)
+            print("your win")
+            userw += 1
+        elif comp_play == "scissors":
+            print("the PC played " + comp_play)
+            print("tie")
+
+    elif choice == "paper":
+        if comp_play == "rock":
+            print("the PC played " + comp_play)
+            print("your win")
+            userw += 1
+        elif comp_play == "paper":
+            print("the PC played " + comp_play)
+            print("tie")
+        elif comp_play == "scissors":
+            print("the PC played " + comp_play)
+            print("YOUR LOSS")
+            compw += 1
+
+
+
+print("you won " + str(userw) + " times")
+print("the PC won " + str(compw) + " times")
