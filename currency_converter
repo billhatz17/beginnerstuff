@@ -1,0 +1,55 @@
+from requests import get
+from pprint import PrettyPrinter
+
+
+BASE_URL = 'https://api.currencyapi.com/v3'
+API_KEY = 'cur_live_8lw55FdPTCNIoMrHpWcfBOmhqPhq2XwiVe9pJXIk'
+
+printer = PrettyPrinter()
+
+
+def get_currencies():
+    url = f"{BASE_URL}/currencies?apikey={API_KEY}"
+    data = get(url).json()
+
+    data = list(data['data'].values())
+    data.sort(key=lambda x: x['code'])
+
+    return data
+
+
+def print_currencies(currencies):
+    for currency in currencies:
+        name = currency['name']
+        _id = currency['code']
+        symbol = currency.get('symbol', "")
+
+        print(f"{_id} - {name} - {symbol}")
+
+currency1 = input('write down the first currency: ').upper()
+currency2 = input("write down the second currency: ").upper()
+convert = input(f"Do you wish to convert {currency1} into {currency2}? ").lower()
+amount = int(input(f"Enter the amount of {currency1} you wish to convert "))
+
+
+def exchange_rate(currency1, currency2):
+
+
+
+    url = f'{BASE_URL}/latest?apikey={API_KEY}&base_currency={currency1}&currencies={currency2}'
+    data = get(url).json()
+
+
+    if len(data) == 0:
+        print('Invalid currencies')
+        return
+
+    return data['data'][currency2]['value']
+
+
+#data = get_currencies()
+#print_currencies(data)
+rate = exchange_rate(currency1, currency2)
+print(f"the exchange rate is: {rate}\n")
+if convert == 'yes':
+    print(f"{amount} of {currency1} is equal to ", amount*rate, f"of {currency2}")
